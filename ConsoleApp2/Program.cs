@@ -25,8 +25,14 @@ namespace HelloWorldApp
             string usersName;
             // paprasam konsolei ievadīt tekstu, saglabajām rezultātu mainīgajā
             usersName = Console.ReadLine();
-            Console.WriteLine("Labdien," + usersName + "!");
-                
+            Console.WriteLine("Please enter your age:");
+            string age;
+            age = Console.ReadLine();
+
+
+
+            Console.WriteLine("Labdien, " + usersName + " tavs vecums ir " + age);
+                    
             Console.ReadLine();
         }
 
