@@ -8,9 +8,9 @@ namespace Calculator
 {
     class Program
     {
-        
+
         static void Main(string[] args)
-     
+
         {
             //CalculateCircleArea();
             CountTwoNubmersTogether();
@@ -22,15 +22,15 @@ namespace Calculator
             firstNumber = GetNumberFromUser("ludzu ievadiet pirmo skaitli");
             double secondNumber;
             secondNumber = GetNumberFromUser("ievadiet otro skaitli");
-            double result; 
+            double result;
             result = firstNumber + secondNumber;
             Console.WriteLine("aprekina rezultats: " + result);
             Console.ReadLine();
 
 
-            
-            
-                
+
+
+
         }
         static void CalculateCircleArea()
         // ctrl + k + d = skaists teksts 
@@ -61,10 +61,14 @@ namespace Calculator
             if (parseWasSuccess == false)
             {
                 Console.WriteLine("slikti ievadits skaitlis" + textInput);
+                Console.WriteLine("ievadi skaitli velreiz");
+                   parsedNumber = GetNumberFromUser(msg);
+
+
             }
             else
             {
-
+                Console.WriteLine("briniskigi ievaditsa skaitlis");
             }
             return parsedNumber;
 
