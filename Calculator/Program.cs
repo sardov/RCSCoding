@@ -8,15 +8,35 @@ namespace Calculator
 {
     class Program
     {
+        
         static void Main(string[] args)
+     
         {
-            CalculateCircleArea();
+            //CalculateCircleArea();
+            CountTwoNubmersTogether();
+
+        }
+        static void CountTwoNubmersTogether()
+        {
+            double firstNumber;
+            firstNumber = GetNumberFromUser("ludzu ievadiet pirmo skaitli");
+            double secondNumber;
+            secondNumber = GetNumberFromUser("ievadiet otro skaitli");
+            double result; 
+            result = firstNumber + secondNumber;
+            Console.WriteLine("aprekina rezultats: " + result);
+            Console.ReadLine();
+
+
+            
+            
+                
         }
         static void CalculateCircleArea()
         // ctrl + k + d = skaists teksts 
         {
             //izveidojam mainigo, kur glabat radiusu
-            int radius;
+            double radius;
             //izveidosim mainigo kur glabat rezultatu
             double result;
             //pieskirsim raiusa maingajam vertibu
@@ -28,17 +48,26 @@ namespace Calculator
             Console.ReadLine();
         }
 
-        static int GetNumberFromUser(string msg)
+        static double GetNumberFromUser(string msg)
         {
             //izvadam fukncijaj iedoto pazinojumu
             Console.WriteLine(msg);
             //nolasam lietotaja iievadi no ekrana un ierkastam teksta mainiga
             string textInput = Console.ReadLine();
             //izveidojam mainigo, kur glabat apalo skaitli
-            int parsedNumber;
+            double parsedNumber;
             //parveidojam ievadito tekstu par skaitli un ierakstam maingajaj
-            parsedNumber = int.Parse(textInput);
+            bool parseWasSuccess = double.TryParse(textInput, out parsedNumber);
+            if (parseWasSuccess == false)
+            {
+                Console.WriteLine("slikti ievadits skaitlis" + textInput);
+            }
+            else
+            {
+
+            }
             return parsedNumber;
+
         }
     }
 }
