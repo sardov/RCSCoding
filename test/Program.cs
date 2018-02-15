@@ -16,20 +16,40 @@ namespace test
 
             Random diceNumberGenerator;
             diceNumberGenerator = new Random();
-            int guessableNumber = diceNumberGenerator.Next(1, maxNumber);
+            int guessableNumber = diceNumberGenerator.Next(1, maxNumber + 1);
             Console.WriteLine("Meginiet uzminet");
             int guess = int.Parse(Console.ReadLine());
 
-            if (guess == guessableNumber)
+            while (guess != guessableNumber)
             {
-                Console.WriteLine("Apsveicu skaitlis minets pareizi" + guessableNumber);
+
+                if (guess == guessableNumber)
+                {
+                    Console.WriteLine("Apsveicu skaitlis minets pareizi " + guessableNumber);
+                    Console.ReadLine();
+                }
+
+                if (guess < guessableNumber)
+                {
+                    Console.WriteLine("Megini velreiz, so reiz bija pamaz");
+                    guess = int.Parse(Console.ReadLine());
+
+
+                }
+                if (guess > guessableNumber)
+                {
+                    Console.WriteLine("Megini velreiz, so reiz bija padaudz");
+                    guess = int.Parse(Console.ReadLine());
+                }
             }
 
-            else
-            {
-                Console.WriteLine("");
-            }
+            Console.WriteLine("Apsveicu skaitlis minets pareizi " + guessableNumber);
+            Console.ReadLine();
+
         }
+
+
+
     }
 }
 
