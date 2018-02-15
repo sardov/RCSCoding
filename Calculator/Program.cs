@@ -12,10 +12,58 @@ namespace Calculator
         static void Main(string[] args)
 
         {
-            //CalculateCircleArea();
-            CountTwoNubmersTogether();
+            string usersInput = "0";
 
+            while (usersInput != "x")
+            {
+                Console.WriteLine("please choose action");
+                Console.WriteLine("a - calculate circle area");
+                Console.WriteLine("c- count two numbers together");
+                Console.WriteLine("g - dalas vai ne");
+                usersInput = Console.ReadLine();
+                //ja atbilde ir a, tad izsaukt apla funkciju
+                //ja atbilde ir c tad izsaukt saskaitisanas fuknciju
+                //ctios gadijumos paradit kludas pazinojumu
+                //DoesTheNumberDevide ();
+                if (usersInput == "a")
+                {
+                    CalculateCircleArea();
+                }
+                else if (usersInput == "c")
+                {
+                    CountTwoNubmersTogether();
+                }
+                else if (usersInput == "g")
+                {
+                    DoesTheNumberDivide();
+                }
+                else if (usersInput == "x")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Sorry,did not understand");
+                }
+            }
+
+            Console.ReadLine();
         }
+        static void DoesTheNumberDivide()
+        {
+            double dalamais = GetNumberFromUser("ludzu ievadiet dalamo");
+            double dalitajs = GetNumberFromUser("ludzu ievadiet dalitaju");
+            double modulo = dalamais % dalitajs;
+            if (modulo == 0)
+            {
+                Console.WriteLine("sei skaitli dalas");
+            }
+            else
+            {
+                Console.WriteLine("sie skaitli nedalas");
+            }
+        }
+
         static void CountTwoNubmersTogether()
         {
             double firstNumber;
@@ -32,6 +80,7 @@ namespace Calculator
 
 
         }
+        //void nozime ka funkcija neatgriez rezultatu taja vieta kur ta izsaukta
         static void CalculateCircleArea()
         // ctrl + k + d = skaists teksts 
         {
@@ -62,7 +111,7 @@ namespace Calculator
             {
                 Console.WriteLine("slikti ievadits skaitlis" + textInput);
                 Console.WriteLine("ievadi skaitli velreiz");
-                   parsedNumber = GetNumberFromUser(msg);
+                parsedNumber = GetNumberFromUser(msg);
 
 
             }
