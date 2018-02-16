@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumbesGuessingGame", "Numbe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{D177755F-F250-4D51-83BC-873E4DD31354}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "todolistapp", "todolistapp\todolistapp.csproj", "{274A1224-0881-49E4-9499-D22D85AFD867}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D177755F-F250-4D51-83BC-873E4DD31354}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D177755F-F250-4D51-83BC-873E4DD31354}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D177755F-F250-4D51-83BC-873E4DD31354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{274A1224-0881-49E4-9499-D22D85AFD867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{274A1224-0881-49E4-9499-D22D85AFD867}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{274A1224-0881-49E4-9499-D22D85AFD867}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{274A1224-0881-49E4-9499-D22D85AFD867}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

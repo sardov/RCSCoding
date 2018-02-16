@@ -20,13 +20,16 @@ namespace test
             Console.WriteLine("Meginiet uzminet");
             int guess = int.Parse(Console.ReadLine());
 
-            while (guess != guessableNumber)
+
+
+            for (int tryCount = 1; tryCount < 3; tryCount = tryCount + 1)
             {
 
                 if (guess == guessableNumber)
                 {
                     Console.WriteLine("Apsveicu skaitlis minets pareizi " + guessableNumber);
                     Console.ReadLine();
+                    break;
                 }
 
                 if (guess < guessableNumber)
@@ -36,15 +39,20 @@ namespace test
 
 
                 }
-                if (guess > guessableNumber)
+                else if (guess > guessableNumber)
                 {
                     Console.WriteLine("Megini velreiz, so reiz bija padaudz");
                     guess = int.Parse(Console.ReadLine());
                 }
+                if (tryCount == 2)
+                {
+                    Console.WriteLine("Tu esi zaudejis, pareizs skaitlis bija " + guessableNumber);
+                    Console.ReadLine();
+                    break;
+                }
             }
 
-            Console.WriteLine("Apsveicu skaitlis minets pareizi " + guessableNumber);
-            Console.ReadLine();
+
 
         }
 
