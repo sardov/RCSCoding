@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System;
+using System.IO;
 
 namespace TodoListApp
 {
@@ -31,12 +32,44 @@ namespace TodoListApp
             // skaititajs = skaititajs + 1; IR TAS PATS KAS skaititajs += 1;
             // IR TAS PATS KAS skaititajs++
             // i ir saīsinājums no vārda index, index latviešu valodā nozīmē skaitītājs
-            
+
             for (int i = 0; i < todoEntries.Count; i++)
             {
-                Console.WriteLine("your todo list entry is " + todoEntries[i]);
+                Console.WriteLine((i + 1) + ". " + todoEntries[i]);
+                Console.WriteLine();
             }
-            
+
+        }
+        public void DeleteTodo(int indexOfTodo)
+        {
+            if (indexOfTodo <= this.todoEntries.Count)
+            {
+                Console.WriteLine("tads ieraksts neeksiste");
+                return;
+            }
+            todoEntries.RemoveAt(indexOfTodo);
+        }
+        public void DeleteAllTodos()
+        {
+            todoEntries.Clear();
+        }
+
+        public void SaveToFile()
+        {
+            for (int i = 0; i < todoEntries.Count; i++)
+            {
+                File.AppendAllText(
+                @"C:\Users\Jakov\Documents\TodoListApplicationSettings\todos.txt",
+                todoEntries[i] + "\r\n");
+
+            }
+
+        }
+        public void Upload()
+        {
+            File.ReadAllLines(
+                @"C:\Users\Jakov\Documents\TodoListApplicationSettings\todos.txt");
+
         }
     }
 }
