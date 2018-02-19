@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{67B2E44E-35E4-4EDD-912F-E1C1D41AE8F3}</ProjectGuid>
+    <ProjectGuid>{CA58B437-2DDA-45C3-BD34-428D26636BCC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>NumbesGuessingGame</RootNamespace>
-    <AssemblyName>NumbesGuessingGame</AssemblyName>
+    <RootNamespace>HelloWorldApp</RootNamespace>
+    <AssemblyName>HelloWorldApp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

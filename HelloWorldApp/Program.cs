@@ -13,7 +13,7 @@ namespace HelloWorldApp
             // izsaucam sevis izveidoto funkciju
             SayHello();
             // izsaucam savu otro izveidoto funkciju
-            SayHelloToUser();
+            // SayHelloToUser();
         }
 
         static void SayHelloToUser()
@@ -25,14 +25,11 @@ namespace HelloWorldApp
             string usersName;
             // paprasam konsolei ievadīt tekstu, saglabajām rezultātu mainīgajā
             usersName = Console.ReadLine();
-            Console.WriteLine("Please enter your age:");
             string age;
+            Console.WriteLine("Please enter your age:");
             age = Console.ReadLine();
-
-
-
-            Console.WriteLine("Labdien, " + usersName + " tavs vecums ir " + age);
-                    
+            age = age + 100;
+            Console.WriteLine("Labdien," + usersName + "!" + "Tavs vecums ir " + age + "!");// Reinis "Labdien, Reinis!"
             Console.ReadLine();
         }
 

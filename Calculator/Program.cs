@@ -6,34 +6,31 @@ using System.Threading.Tasks;
 
 namespace Calculator
 {
+    using System.Runtime.InteropServices;
+
     class Program
     {
-
         static void Main(string[] args)
-
         {
             string usersInput = "0";
-
-            while (usersInput != "x")
+            while (true)
             {
                 Console.WriteLine("please choose action");
                 Console.WriteLine("a - calculate circle area");
-                Console.WriteLine("c- count two numbers together");
-                Console.WriteLine("g - dalas vai ne");
+                Console.WriteLine("c - count two numbers together");
                 usersInput = Console.ReadLine();
-                //ja atbilde ir a, tad izsaukt apla funkciju
-                //ja atbilde ir c tad izsaukt saskaitisanas fuknciju
-                //ctios gadijumos paradit kludas pazinojumu
-                //DoesTheNumberDevide ();
+                // ja atbilde ir a, tad izsaukt apļa funkciju,
+                // ja atbilde ir c, tad izsaukt saskaitīšanas funkciju,
+                // visos citos gadījumos paradīt kļūdas paziņojumu
                 if (usersInput == "a")
                 {
                     CalculateCircleArea();
                 }
                 else if (usersInput == "c")
                 {
-                    CountTwoNubmersTogether();
+                    CountTwoNumbersTogether();
                 }
-                else if (usersInput == "g")
+                else if (usersInput == "d")
                 {
                     DoesTheNumberDivide();
                 }
@@ -43,84 +40,85 @@ namespace Calculator
                 }
                 else
                 {
-                    Console.WriteLine("Sorry,did not understand");
+                    Console.WriteLine("Sorry, did not understand");
                 }
+                
+                Console.ReadLine();
             }
-
-            Console.ReadLine();
         }
+
+        // semikolu aiz funkcijas definīcijas neliek, jo netiek veikta nekāda darbība,
+        // vienkārši ir pateikts ka šī būs funkcija
         static void DoesTheNumberDivide()
         {
-            double dalamais = GetNumberFromUser("ludzu ievadiet dalamo");
-            double dalitajs = GetNumberFromUser("ludzu ievadiet dalitaju");
-            double modulo = dalamais % dalitajs;
+            double dalāmais = GetNumberFromUser("lūdzu ievadiet dalāmo");
+            double dalitājs = GetNumberFromUser("lūdzu ievadiet dalītāju");
+            double modulo = dalāmais % dalitājs;
             if (modulo == 0)
             {
-                Console.WriteLine("sei skaitli dalas");
+                Console.WriteLine("šie skaitļi dalās");
             }
             else
             {
-                Console.WriteLine("sie skaitli nedalas");
+                Console.WriteLine("nedalās");
             }
         }
 
-        static void CountTwoNubmersTogether()
+        // void nozīmē to, ka šī funkcija rezultātā neko neatgriež tajā vietā kur tā ir izsaukta
+        static void CountTwoNumbersTogether()
         {
+            // izveidojam mainīgo, kur glabāt lietotāja ievadīto pirmo skaitli
             double firstNumber;
-            firstNumber = GetNumberFromUser("ludzu ievadiet pirmo skaitli");
+            // izsaucam skaitļa iegūšanas funkciju, rezultātu ierakstam mainīgajā
+            firstNumber = GetNumberFromUser("lūdzu ievadiet pirmo skaitli");
+            // izveidojam mainīgo, kur glabāt lietotāja ievadīto otro skaitli 
             double secondNumber;
-            secondNumber = GetNumberFromUser("ievadiet otro skaitli");
+            // izsaucam skaitļa iegūšanas funkciju, rezultātu ierakstam mainīgajā
+            secondNumber = GetNumberFromUser("tagad ievadiet otro skaitli");
+            // izveidojam mainīgo, kurā glabāt rezultātu
             double result;
+            // aprēķinām rezultātu un ierakstam mainīgajā
             result = firstNumber + secondNumber;
-            Console.WriteLine("aprekina rezultats: " + result);
+            Console.WriteLine("aprēķina rezultāts: " + result);
             Console.ReadLine();
-
-
-
-
-
         }
-        //void nozime ka funkcija neatgriez rezultatu taja vieta kur ta izsaukta
+
         static void CalculateCircleArea()
-        // ctrl + k + d = skaists teksts 
         {
-            //izveidojam mainigo, kur glabat radiusu
+            // izveidojam mainīgo, kur glabāt rādiusu
             double radius;
-            //izveidosim mainigo kur glabat rezultatu
+            // izveidosim mainīgo, kur glabāt rezultātu
             double result;
-            //pieskirsim raiusa maingajam vertibu
-            radius = GetNumberFromUser("ludzu ievadiet radiusu ");
-            //veicam aprekinasanas operaciju
+            // piešķirsim rādiusa mainīgajam vērtību
+            radius = GetNumberFromUser("lūdzu ievadiet rādiusu");
+            // veicam apreķināšanas operāciju
             result = radius * radius * 3.14;
-            // paradam rezulatu lietotajam
-            Console.WriteLine("rezultat " + result);
+            // parādam rezultātu lietotājam
+            Console.WriteLine("Rezultāts: " + result);
             Console.ReadLine();
         }
 
         static double GetNumberFromUser(string msg)
         {
-            //izvadam fukncijaj iedoto pazinojumu
+            // izvadam funkcijai iedoto paziņojumu
             Console.WriteLine(msg);
-            //nolasam lietotaja iievadi no ekrana un ierkastam teksta mainiga
+            // nolasām lietotāja ievadi no ekrāna un ierakstam teksta mainīgajā
             string textInput = Console.ReadLine();
-            //izveidojam mainigo, kur glabat apalo skaitli
+            // izveidojam mainīgo, kur glabāt apaļo skaitli
             double parsedNumber;
-            //parveidojam ievadito tekstu par skaitli un ierakstam maingajaj
+            // pārveidojam ievadīto tekstu par skaitli un ierakstam mainīgajā
             bool parseWasSuccess = double.TryParse(textInput, out parsedNumber);
-            if (parseWasSuccess == false)
+            if (!parseWasSuccess)
             {
-                Console.WriteLine("slikti ievadits skaitlis" + textInput);
-                Console.WriteLine("ievadi skaitli velreiz");
+                Console.WriteLine("slikti ievadīts skaitlis \"" + textInput + "\"");
+                Console.WriteLine("ievadi skaitli vēlreiz");
                 parsedNumber = GetNumberFromUser(msg);
-
-
             }
             else
             {
-                Console.WriteLine("briniskigi ievaditsa skaitlis");
+                Console.WriteLine("brīnišķīgi ievadīts skaitlis");
             }
             return parsedNumber;
-
         }
     }
 }

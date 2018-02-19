@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace todolistapp
+namespace TodoListApp
 {
     class Program
     {
@@ -13,14 +13,12 @@ namespace todolistapp
             TodoList list = new TodoList();
             while (true)
             {
-
-                //pievienot jaunu daramo lietu
-                Console.WriteLine("ludzu ievadiet daramo lietu:");
+                // pievienot jaunu darāmo lietu
+                Console.WriteLine("lūdzu ievadiet darāmo lietu:");
                 string todoTask = Console.ReadLine();
                 list.AddNewTodo(todoTask);
-
-                // dzest visas daramas lietas
-                // izvadit visas darams lietas uz ekrana
+                // dzēst visas darāmās lietas
+                // izvadīt visas darāmās lietas uz ekrāna
                 list.ShowAllTodos();
             }
         }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{274A1224-0881-49E4-9499-D22D85AFD867}</ProjectGuid>
+    <ProjectGuid>{3C5B6B08-C580-4F3D-88C3-0EF013C08947}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>todolistapp</RootNamespace>
-    <AssemblyName>todolistapp</AssemblyName>
+    <RootNamespace>TodoListApp</RootNamespace>
+    <AssemblyName>TodoListApp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,9 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TodoList.cs" />
+    <Compile Include="Console.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TodoList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
