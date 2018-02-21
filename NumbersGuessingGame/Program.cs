@@ -19,7 +19,7 @@ namespace NumbersGuessingGame
             int guessableNumber = randomNumberMaker.Next(1, maxNumber + 1);
             bool hasUserWon = false;
             // cikls: kamēr lietotājs neuzmin:
-            for (int tryCount = 1; tryCount <= 3 && !hasUserWon; tryCount = tryCount + 1)
+            for (int tryCount = 1; tryCount <= 4 && !hasUserWon; tryCount = tryCount + 1)
             {
                 // paprasīt lietotājam lai viņš min kāds skaitlis ir izveidots (iegūt ievadi)
                 Console.WriteLine("mēģinājums #" + tryCount + " lūdzu mēģini uzminēt");
@@ -37,11 +37,11 @@ namespace NumbersGuessingGame
                 {
                     Console.WriteLine("es esmu iedomājies lielāku skaitli");
                 }
-                else 
+                else
                 {
                     Console.WriteLine("es esmu iedomājies mazāku skaitli");
                 }
-            }Console.WriteLine("tu esi zaudejis, skaitlis bija " + guessableNumber );
+            }
 
             Console.ReadLine();
         }

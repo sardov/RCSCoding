@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System;
-using System.IO;
 
 namespace TodoListApp
 {
+    using System.IO;
 
     class TodoList
     {
@@ -12,10 +12,11 @@ namespace TodoListApp
         // saucas tāpat, kā klase
         public TodoList()
         {
-            todoEntries = new List<string>();
+            todoEntries = new List<TodoListEntry>();
         }
 
-        List<string> todoEntries;
+        List<TodoListEntry> todoEntries;
+        string pathToTodoFile = @"C:\Users\Jakov\Documents\TodoListApplicationSettings\todos.txt";
 
         public void AddNewTodo(string task)
         {
@@ -23,8 +24,14 @@ namespace TodoListApp
             // tad uzspiežam uz klases nosaukuma un
             // piespiežam Ctrl + .
             Console.WriteLine("uzdevums pievienots:" + task);
-            todoEntries.Add(task);
+            // izveidojam jaunu uzdevumu
+            TodoListEntry usersTodo = new TodoListEntry();
+            // jaunizveidotajam uzdevumam piešķiram nosaukumu, ko ievadījis lietotājis
+            usersTodo.Name = task;
+            // pievienojam jauno uzdevumu mūsu uzdevumu sarakstam
+            todoEntries.Add(usersTodo);
         }
+        
 
         public void ShowAllTodos()
         {
@@ -35,20 +42,35 @@ namespace TodoListApp
 
             for (int i = 0; i < todoEntries.Count; i++)
             {
-                Console.WriteLine((i + 1) + ". " + todoEntries[i]);
+                // izvadām kārtas numuru un uzdevuma nosaukumu (bet bez enter galā)
+                Console.Write((i + 1) + ".  " + todoEntries[i].Name);
+                // ja uzdevums ir pabeigts (IsCompleted == true)
+                if (todoEntries[i].IsCompleted)
+                {
+                    // tad uzrakstam uz ekrāna "DONE" (bet bez enter)
+                    Console.Write(" DONE");
+                }
+
+                // nospiežam enter
                 Console.WriteLine();
             }
-
         }
+
         public void DeleteTodo(int indexOfTodo)
         {
-            if (indexOfTodo <= this.todoEntries.Count)
+            // neļaut mēģināt izvilkt ierakstu no saraksta, 
+            // kura kārtas numurs ir ārpus ierakstu robežām
+            if (indexOfTodo >= this.todoEntries.Count)
             {
-                Console.WriteLine("tads ieraksts neeksiste");
-                return;
+                // ja sarakstā ir 3 ieraksti, tad pēdējais indekss ir 2
+                Console.WriteLine("tāds ieraksts neeksitē");
             }
-            todoEntries.RemoveAt(indexOfTodo);
+            else
+            {
+                todoEntries.RemoveAt(indexOfTodo);
+            }
         }
+
         public void DeleteAllTodos()
         {
             todoEntries.Clear();
@@ -56,20 +78,50 @@ namespace TodoListApp
 
         public void SaveToFile()
         {
-            for (int i = 0; i < todoEntries.Count; i++)
+            File.Delete(pathToTodoFile);
+            // Ctrl + .
+            for(int i = 0; i < todoEntries.Count; i++)
             {
-                File.AppendAllText(
-                @"C:\Users\Jakov\Documents\TodoListApplicationSettings\todos.txt",
-                todoEntries[i] + "\r\n");
-
+                // Append (angļu val) - Pievienot, papildināt
+                string nameOfTodo = todoEntries[i].Name;
+                File.AppendAllText(pathToTodoFile, nameOfTodo + "\r\n");
+                bool xxxx = todoEntries[i].IsCompleted;
+                File.AppendAllText(pathToTodoFile, xxxx + "\r\n");
             }
-
         }
-        public void Upload()
-        {
-            File.ReadAllLines(
-                @"C:\Users\Jakov\Documents\TodoListApplicationSettings\todos.txt");
 
+        public void LoadFromFile()
+        {
+            // ja funkcija, kas pārbauda vai fails eksistē, atgriež false (tātad neeksistē)
+            if (!File.Exists(pathToTodoFile))
+            {
+                // tad pārtraucam LoadFromFile un atgriežamies atpakaļ
+                return;
+            }
+            
+            // citādāk, nolasam faila saturu pa rindām
+            string[] allLinesFromFile = File.ReadAllLines(pathToTodoFile);
+            
+            // dodamies cauri sarakstam ar teksta rindām, kas ir ielādētas no faila
+            for (var index = 0; index < allLinesFromFile.Length; index += 2)
+            {
+                string listEntry = allLinesFromFile[index];
+                // listEntry mainīgajā ir ierakstīta viena teksta rinda no faila
+                // izveidojam jaunu uzdevumu
+                TodoListEntry fileTodo = new TodoListEntry();
+                // uzdevumam uzdodam par nosaukumu teksta rindu, kas nolasīta no faila
+                fileTodo.Name = listEntry;
+                // uzdevumam uzdodam par izpildes stāvokli vērtību, kas nolasīta no faila
+                fileTodo.IsCompleted = bool.Parse(allLinesFromFile[index + 1]);
+                // jaunizveidoto uzdevumu pievienojam kopējo uzdevumu sarakstam
+                this.todoEntries.Add(fileTodo);
+            }
+        }
+
+        public void MarkTodoAsDone(int doneTodoIndex)
+        {
+            TodoListEntry doneTodo = todoEntries[doneTodoIndex];
+            doneTodo.IsCompleted = true;
         }
     }
 }
