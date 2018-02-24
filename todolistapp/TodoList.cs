@@ -16,7 +16,7 @@ namespace TodoListApp
         }
 
         List<TodoListEntry> todoEntries;
-        string pathToTodoFile = @"C:\Users\Jakov\Documents\TodoListApplicationSettings\todos.txt";
+        string pathToTodoFile = @"C:\Users\reinis.vesers\Documents\TodoApplicationSettings\todos.txt";
 
         public void AddNewTodo(string task)
         {
@@ -102,6 +102,9 @@ namespace TodoListApp
             // citādāk, nolasam faila saturu pa rindām
             string[] allLinesFromFile = File.ReadAllLines(pathToTodoFile);
             
+            // pirms saraksta ielādes no faila, to iztīram no vecā satura
+            todoEntries.Clear();
+
             // dodamies cauri sarakstam ar teksta rindām, kas ir ielādētas no faila
             for (var index = 0; index < allLinesFromFile.Length; index += 2)
             {

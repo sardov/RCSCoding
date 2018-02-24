@@ -1,0 +1,24 @@
+﻿@model AdvertsWebApp.Models.Advert
+
+<h2>Izvejdot sludinajumu</h2>
+
+@using (Html.BeginForm())
+{
+
+    <div>
+        <label>sludinajuma noasukums</label>
+        @Html.EditorFor(model => model.Name)
+    </div>
+
+    <div>
+        <label>sludinajuma teksts</label>
+        @Html.EditorFor(model => model.AdvertText)
+    </div>
+
+    <div>
+        <label>sludinajuma cenas</label>
+        @Html.EditorFor(model => model.Price)
+    </div>
+    <input type="submit" value="Saglabat sludnajumu"/>
+}
+

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2866A373-A136-4466-91A5-BE769A3F8265}</ProjectGuid>
+    <ProjectGuid>{55F1417E-CD4B-4FAD-94EA-72B5F6F8BD68}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>FizzBuzz</RootNamespace>
-    <AssemblyName>FizzBuzz</AssemblyName>
+    <RootNamespace>ContainsOnlyApp</RootNamespace>
+    <AssemblyName>ContainsOnlyApp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
