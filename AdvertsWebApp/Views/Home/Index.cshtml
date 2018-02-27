@@ -4,15 +4,13 @@
 <h1>Visi sludinājumi</h1>
 <!-- šajā vietā izmantojot foreach ciklu, uzģenerēsim HTML kodu priekš katra
     sludinājuma -->
-@foreach (var ad in Model)
+@foreach(var ad in Model)
 {
     <p>
-        
         <a href="/Home/Advert?advertId=@ad.AdvertId">
-        @ad.Name - @ad.Price eur
+            @ad.Name - @ad.Price eur
         </a>
-    </p>
-
-
+    </p> 
 }
-@Html.ActionLink("Pievienot jaunu sludinajumu,", "CreateAdvert")
+
+@Html.ActionLink("pievienot jaunu sludinājumu", "CreateAdvert")
